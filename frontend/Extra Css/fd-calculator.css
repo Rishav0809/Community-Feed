@@ -1,0 +1,11 @@
+.interest-rate {
+  margin-left: 15px;
+  border: none;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+.interest-rate:hover {
+  background-color: rgb(138, 200, 238);
+  color: white;
+}
