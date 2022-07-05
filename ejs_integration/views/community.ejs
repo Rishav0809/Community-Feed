@@ -1,0 +1,423 @@
+<%- include("layouts/header") -%>
+
+  <body>
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+      <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div
+      id="main-wrapper"
+      data-theme="light"
+      data-layout="vertical"
+      data-navbarbg="skin6"
+      data-sidebartype="full"
+      data-sidebar-position="fixed"
+      data-header-position="fixed"
+      data-boxed-layout="full"
+    >
+      <!-- ============================================================== -->
+      <!-- Topbar header - style you can find in pages.scss -->
+      <!-- ============================================================== -->
+      <%- include("components/topbar") -%>
+      <!-- ============================================================== -->
+      <!-- End Topbar header -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Left Sidebar - style you can find in sidebar.scss  -->
+      <!-- ============================================================== -->
+      <%- include("components/sidebar") -%>
+      <!-- ============================================================== -->
+      <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Page wrapper  -->
+      <!-- ============================================================== -->
+      <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <div class="page-breadcrumb">
+          <div class="row">
+            <div class="col-7 align-self-center">
+              <h4
+                class="page-title text-truncate text-dark font-weight-medium mb-1"
+              >
+                Community Feed
+              </h4>
+
+              <div class="d-flex align-items-center">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb m-0 p-0">
+                    <li
+                      class="breadcrumb-item text-muted active"
+                      aria-current="page"
+                    >
+                      Bring your ideas together
+                    </li>
+
+                    <li></li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Bread crumb and right sidebar toggle -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        <div class="container-fluid">
+          <!--Add New Post-->
+          <!-- Button trigger modal -->
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Create Post
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div>
+                    <span>
+                      <img
+                        class="rounded-circle"
+                        width="45"
+                        src="/assets/images/users/5.jpg"
+                        alt=""
+                      />
+                    </span>
+                    <span class="h5 m-2 font-weight-bold">Jason Doe</span>
+                  </div>
+                  <div>
+                    <textarea
+                      class="pt-2"
+                      style="resize: none; border: none; width: 100%"
+                      placeholder="What's on your mind?"
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    style="width: 100%; border-radius: 5px"
+                  >
+                    Post
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card gedf-card">
+            <div class="card-header">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="mr-2">
+                    <img
+                      class="rounded-circle"
+                      width="45"
+                      src="/assets/images/users/5.jpg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="ml-1 posting">
+                  <button
+                    type="button"
+                    class="post-input"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                  >
+                    What's on your mind?
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post -->
+          <div class="card gedf-card">
+            <div class="card-header">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="mr-2">
+                    <img
+                      class="rounded-circle"
+                      width="45"
+                      src="/assets/images/users/5.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-2">
+                    <div class="h5 m-0 font-weight-bold">Jason Doe</div>
+                    <span class="text-muted">10 min ago</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="text-dark">
+                In stock market you can calculate the risk but you can't
+                calculate the mistakes you are going to commit. Lesser the
+                mistakes better the returns.
+              </h3>
+            </div>
+            <div class="card-footer">
+              <div><i class="fas fa-heart text-danger px-1"></i> 237</div>
+            </div>
+
+            <div class="form-group shadow-textarea comment-area">
+              <textarea
+                id="textarea1"
+                class="form-control z-depth-1"
+                style="
+                  border-style: none;
+                  border-color: Transparent;
+                  overflow: auto;
+                  resize: none;
+                  background-color: rgba(245, 250, 254, 0.03);
+                "
+                id="exampleFormControlTextarea6"
+                rows="1"
+                placeholder="Write your comment here"
+                
+              ></textarea>
+
+              <button type="button" class="post-button mr-5">Post</button>
+              
+              <br><br>
+              
+              
+              
+              <div class="row mt-0" style="margin: 10px;">
+                <div class="col-md-12">
+                  <div class="card">
+                    <div class="row no-gutters">
+                      <div class="chat-box position-relative">
+                        <ul class="chat-list list-style-none px-3 pt-3">
+                          <!-- Comment Row -->
+  
+                          <li class="commented-section mt-2 p-3">
+                            <div
+                              class="d-flex flex-row align-items-center commented-user"
+                            >
+                              <div class="chat-img d-inline-block p-3">
+                                <img
+                                  src="/assets/images/users/4.jpg"
+                                  alt="user"
+                                  class="rounded-circle"
+                                  width="45"
+                                />
+                              </div>
+                              <div class="comment-name mr-2 mt-2">John Doe</div>
+                            </div>
+                            <div class="comment-text-sm ml-4">
+                              <div>
+                                The emerging claim that antitrust can combat
+                                inflation reflects “science denial”. There are
+                                many areas like transitory inflation where serious
+                                economists differ. Antitrust as an anti-inflation
+                                strategy is not one of them.
+                              </div>
+                            </div>
+                            <div class="flex-row px-4 pt-2">
+                              <button class="ml-auto mt-1 reply">Reply</button>
+                            </div>
+                            <!-- <div class="reply-section">
+                              <div class="replies">
+                                <ul>
+                                  <li class="commented-section mt-2 p-3">
+                                    <div
+                                      class="d-flex flex-row align-items-center commented-user"
+                                    >
+                                      <div class="chat-img d-inline-block p-3">
+                                        <img
+                                          src="/assets/images/users/2.jpg"
+                                          alt="user"
+                                          class="rounded-circle"
+                                          width="45"
+                                        />
+                                      </div>
+                                      <div class="comment-name mr-2 mt-2">
+                                        Samoya Johns
+                                      </div>
+                                    </div>
+                                    <div class="comment-text-sm ml-4">
+                                      <div>True that.</div>
+                                    </div>
+                                    <div class="reply-section">
+                                      <div class="flex-row px-4 pt-2">
+                                        <button class="ml-auto mt-1 reply">
+                                          Reply
+                                        </button>
+                                      </div>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div> -->
+                          </li>
+                          <!-- Comment Row -->
+  
+                          <li class="commented-section mt-2 p-3">
+                            <div
+                              class="d-flex flex-row align-items-center commented-user"
+                            >
+                              <div class="chat-img d-inline-block p-3">
+                                <img
+                                  src="/assets/images/users/2.jpg"
+                                  alt="user"
+                                  class="rounded-circle"
+                                  width="45"
+                                />
+                              </div>
+                              <div class="comment-name mr-2 mt-2">
+                                Samoya Johns
+                              </div>
+                            </div>
+                            <div class="comment-text-sm ml-4">
+                              <div>
+                                With inflation squeezing the budgets of people of
+                                Canada, it took only a minute for politicians to
+                                blame price increases on big corporations. U.S.
+                                President Biden often accuses food distributors,
+                                baby formula producers, shipping companies and gas
+                                retailers of price gouging. He continues to push
+                                his stalled agenda: tax the rich and corporations
+                                to pay for new social benefits and climate-change
+                                subsidies.
+                              </div>
+                            </div>
+                            <div class="reply-section">
+                              <div class="flex-row px-4 pt-2">
+                                <button class="ml-auto mt-1 reply">Reply</button>
+                              </div>
+                            </div>
+                          </li>
+                          <!-- Comment Row -->
+  
+                          <li class="commented-section mt-2 p-3">
+                            <div
+                              class="d-flex flex-row align-items-center commented-user"
+                            >
+                              <div class="chat-img d-inline-block p-3">
+                                <img
+                                  src="/assets/images/users/3.jpg"
+                                  alt="user"
+                                  class="rounded-circle"
+                                  width="45"
+                                />
+                              </div>
+                              <div class="comment-name mr-2 mt-2">Dohn Joe</div>
+                            </div>
+                            <div class="comment-text-sm ml-4">
+                              <div>
+                                With inflation squeezing Canadians’ budgets, it
+                                took only a minute for politicians to blame price
+                                increases on big corporations. U.S. President
+                                Biden often accuses food distributors, baby
+                                formula producers, shipping companies and gas
+                                retailers of price gouging. He continues to push
+                                his stalled agenda: tax the rich and corporations
+                                to pay for new social benefits and climate-change
+                                subsidies.
+                              </div>
+                            </div>
+                            <div class="reply-section">
+                              <div class="flex-row px-4 pt-2">
+                                <button class="ml-auto mt-1 reply">Reply</button>
+                              </div>
+                            </div>
+                          </li>
+  
+                          <!-- Comment Row -->
+  
+                          <li class="commented-section mt-2 p-3">
+                            <div
+                              class="d-flex flex-row align-items-center commented-user"
+                            >
+                              <div class="chat-img d-inline-block p-3">
+                                <img
+                                  src="/assets/images/users/7.jpg"
+                                  alt="user"
+                                  class="rounded-circle"
+                                  width="45"
+                                />
+                              </div>
+                              <div class="comment-name mr-2 mt-2">
+                                Reed Richards
+                              </div>
+                            </div>
+                            <div class="comment-text-sm ml-4">
+                              <div>
+                                Even if market concentration did lead to higher
+                                consumer prices, it is not clear that inflation —
+                                year-over-year increases in the general price
+                                level — is more likely in concentrated markets
+                                than competitive ones. The economics literature on
+                                industrial organization is replete with examples
+                                suggesting that in concentrated markets pricing
+                                tends to be rigid.
+                              </div>
+                            </div>
+                            <div class="reply-section">
+                              <div class="flex-row px-4 pt-2">
+                                <button class="ml-auto mt-1 reply">Reply</button>
+                              </div>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--Comment Section -->
+
+            
+          </div>
+        </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Container fluid  -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- footer -->
+      <!-- ============================================================== -->
+      <footer class="footer text-center"></footer>
+      <!-- ============================================================== -->
+      <!-- End footer -->
+      <!-- ============================================================== -->
+    </div>
+   <%- include("layouts/footer") -%>

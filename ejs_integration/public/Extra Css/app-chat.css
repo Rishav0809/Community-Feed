@@ -1,0 +1,151 @@
+body {
+  background-color: #eee;
+}
+
+.bdge {
+  height: 21px;
+  background-color: orange;
+  color: #fff;
+  font-size: 11px;
+  padding: 8px;
+  border-radius: 4px;
+  line-height: 3px;
+}
+
+.comments {
+  text-decoration: underline;
+  text-underline-position: under;
+  cursor: pointer;
+}
+
+.dot {
+  height: 7px;
+  width: 7px;
+  margin-top: 3px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.hit-voting:hover {
+  color: blue;
+}
+
+.hit-voting {
+  cursor: pointer;
+}
+
+.h7 {
+  font-size: 0.8rem;
+}
+
+.h5 {
+  color: black;
+}
+
+.gedf-wrapper {
+  margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+  .gedf-main {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+  .gedf-card {
+    margin-bottom: 2.77rem;
+  }
+}
+
+.dropdown-toggle::after {
+  content: none;
+  display: none;
+}
+
+.commented-section {
+  font-size: 75%;
+}
+
+.replies {
+  font-size: 125%;
+}
+
+.post-button {
+  float: right;
+  border: none;
+  background-color: rgba(233, 236, 239, 0.03);
+  color: rgb(88, 88, 245);
+  margin-bottom: 6px;
+  font-size: small;
+}
+
+.post-button:hover {
+  color: rgb(104, 4, 197);
+}
+
+.post-button:active {
+  color: rgb(104, 4, 197);
+}
+
+.reply {
+  border: none;
+  background-color: white;
+  color: rgb(164, 161, 161);
+  margin: 4px;
+  font-size: small;
+}
+
+.reply:hover {
+  color: rgb(110, 108, 108);
+}
+
+.comment-name {
+  color: black;
+  font-weight: 500;
+}
+
+.create-post {
+  float: right;
+  border: none;
+  background-color: rgb(161, 96, 222);
+  padding: 8px 13px;
+  color: white;
+  border-radius: 5px;
+  font-size: small;
+}
+
+.create-post:hover {
+  background-color: rgb(104, 4, 197);
+}
+
+.create-post:active {
+  background-color: rgb(104, 4, 197);
+}
+
+.posting {
+  margin: 20px;
+  width: 100%;
+}
+
+.post-input {
+  background: rgba(210, 207, 207, 0.223);
+  color: grey;
+  border: none;
+  border-radius: 35px;
+  text-align: left;
+  padding: 10px;
+  margin: 5px;
+  width: 100%;
+}
+
+.modal-title {
+  text-align: center;
+  color: black;
+  font-size: 18px;
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.comment-area {
+  background-color: rgba(233, 236, 239, 0.558);
+}
