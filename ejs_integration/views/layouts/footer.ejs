@@ -1,6 +1,7 @@
 <script src="/assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="/assets/libs/popper.js/dist/umd/popper.min.js"></script>
 <script src="/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
 <!-- apps -->
 <!-- apps -->
 <script src="/dist/js/app-style-switcher.js"></script>
@@ -10,6 +11,7 @@
 <!--Custom JavaScript -->
 <script src="/dist/js/custom.min.js"></script>
 <!--This page JavaScript -->
+
 <script>
     $(function () {
       $(document).on("keypress", "#textarea1", function (e) {
@@ -24,28 +26,7 @@
       });
     });
 
-    calculateResult();
-
-    function displayMonthly() {
-      document.getElementById("displayFD").innerHTML =
-        document.getElementById("fixed_deposit").value;
-
-      calculateResult();
-    }
-
-    function displayRate() {
-      document.getElementById("displayRate").innerHTML =
-        document.getElementById("return_rate").value;
-
-      calculateResult();
-    }
-
-    function displayTenure() {
-      document.getElementById("displayTenure").innerHTML =
-        document.getElementById("tenure").value;
-
-      calculateResult();
-    }
-  </script>
+    
+  </script>  
 </body>
 </html>
