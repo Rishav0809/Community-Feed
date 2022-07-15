@@ -177,21 +177,21 @@
                   />
                 </div>
                 <div class="ml-2">
-                  <div class="h5 m-0 font-weight-bold"><%= post.user %></div>
-                  <span class="text-muted">10 min ago</span>
+                  <div class="h5 m-0 font-weight-bold">
+                    <%= post.user[0].name %>
+                  </div>
+                  <span class="text-muted"><%= post.date %> </span>
                 </div>
               </div>
             </div>
           </div>
           <div class="card-body">
-            <h3 class="text-dark">
-              In stock market you can calculate the risk but you can't calculate
-              the mistakes you are going to commit. Lesser the mistakes better
-              the returns.
-            </h3>
+            <h3 class="text-dark"><%= post.text %></h3>
           </div>
           <div class="card-footer">
-            <div><i class="fas fa-heart text-danger px-1"></i> 237</div>
+            <div>
+              <i class="fas fa-heart text-danger px-1"></i><%= post.likes %>
+            </div>
           </div>
 
           <div class="form-group shadow-textarea comment-area">
@@ -221,7 +221,7 @@
                     <div class="chat-box position-relative">
                       <ul class="chat-list list-style-none px-3 pt-3">
                         <!-- Comment Row -->
-
+                        <% post.comments.forEach(comment=>{ %>
                         <li class="commented-section mt-2 p-3">
                           <div
                             class="d-flex flex-row align-items-center commented-user"
@@ -234,16 +234,12 @@
                                 width="45"
                               />
                             </div>
-                            <div class="comment-name mr-2 mt-2">John Doe</div>
+                            <div class="comment-name mr-2 mt-2">
+                              <%= comment.username %>
+                            </div>
                           </div>
                           <div class="comment-text-sm ml-4">
-                            <div>
-                              The emerging claim that antitrust can combat
-                              inflation reflects “science denial”. There are
-                              many areas like transitory inflation where serious
-                              economists differ. Antitrust as an anti-inflation
-                              strategy is not one of them.
-                            </div>
+                            <%= comment.text %>
                           </div>
                           <div class="flex-row px-4 pt-2">
                             <button class="ml-auto mt-1 reply">Reply</button>
@@ -282,6 +278,7 @@
                               </div>
                             </div> -->
                         </li>
+                        <% }) %>
                         <!-- Comment Row -->
 
                         <!-- <li class="commented-section mt-2 p-3">

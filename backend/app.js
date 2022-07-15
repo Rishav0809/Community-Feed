@@ -37,7 +37,7 @@ app.use('/', homeRoutes);
 app.use('/community', communityRoutes);
 app.use('/api/user', userRouter);
 app.use('/api/community', communityRoutes);
-app.use('/api/post/:id', commentRoutes);
+app.use('/api/comment', commentRoutes);
 
 //running the server
 

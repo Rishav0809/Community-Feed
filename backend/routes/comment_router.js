@@ -5,6 +5,6 @@ const router = express.Router();
 //get
 
 //post
-router.post('/', createComment);
+router.post('/create/:postid/:userid', createComment);
 
 module.exports = router;

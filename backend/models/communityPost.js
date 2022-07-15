@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
+const User = require('../models/user');
 
 const postSchema = new mongoose.Schema({
   title: {
     type: String,
     trim: true,
     required: true,
+  },
+  likes: {
+    type: Number,
+    default: 0,
   },
   text: {
     type: String,
@@ -15,10 +20,12 @@ const postSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-  },
+  user: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
   comments: [
     {
       type: mongoose.Schema.Types.Mixed,

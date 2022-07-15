@@ -10,11 +10,22 @@ const commentSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  // each comment can only relates to one blog, so it's not in array
-  post: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Post',
+  username: {
+    type: String,
   },
+  // each comment can only relates to one blog, so it's not in array
+  user: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+  ],
+  post: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Post',
+    },
+  ],
 });
 
 module.exports = mongoose.model('Comment', commentSchema);
