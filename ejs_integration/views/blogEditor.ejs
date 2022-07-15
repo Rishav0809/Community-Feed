@@ -27,7 +27,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.2.0/classic/ckeditor.js"></script>
+    <script src="/ckonlinebuild/build/ckeditor.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -70,27 +70,11 @@
           <p>This is some sample content.</p>
         </div>
         <button id="submit">Submit</button>
-        <script>
-          let editor;
-
-          ClassicEditor.create(document.querySelector("#editor"))
-            .then((newEditor) => {
-              editor = newEditor;
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-
-          // Assuming there is a <button id="submit">Submit</button> in your application.
-          document.querySelector("#submit").addEventListener("click", () => {
-            const editorData = editor.getData();
-
-            console.log(editorData);
-          });
-        </script>
+        
+        <script type="module" src="/ckeditor.js"></script>
       </div>
     </div>
   </div>
 
   <%- include("layouts/footer") -%>
-</body>
+
