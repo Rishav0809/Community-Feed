@@ -30,6 +30,10 @@ app.get("/login", (req, res) => {
   res.render("login", { title: "Login" });
 });
 
+app.get("/blogEditor", (req, res) => {
+  res.render("blogEditor", { title: "Blog Editor" });
+});
+
 app.post("/login", (req, res) => {
   console.log(req.credential);
 });
