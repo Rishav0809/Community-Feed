@@ -34,6 +34,14 @@ app.get("/blogEditor", (req, res) => {
   res.render("blogEditor", { title: "Blog Editor" });
 });
 
+app.get("/stocks", (req, res) => {
+  res.render("stocks", { title: "Popular Stocks" });
+});
+
+app.get("/specificStocks", (req, res) => {
+  res.render("specificStocks", { title: "Specific Stocks" });
+});
+
 app.post("/login", (req, res) => {
   console.log(req.credential);
 });

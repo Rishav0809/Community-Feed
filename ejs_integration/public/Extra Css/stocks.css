@@ -1,0 +1,41 @@
+.form {
+  position: relative;
+}
+
+.form .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #4d4949;
+}
+
+.form span {
+  position: absolute;
+  right: 17px;
+  top: 13px;
+  padding: 2px;
+  border-left: 1px solid #d1d5db;
+}
+
+.form-input {
+  height: 55px;
+  text-indent: 33px;
+  border-radius: 15px;
+}
+
+.form-input:focus {
+  box-shadow: none;
+  border: none;
+}
+
+.email {
+  background-color: rgb(100, 100, 211);
+  width: 250px;
+  color: white;
+  border-radius: 5px;
+  float: right;
+}
+
+.email:hover {
+  background-color: rgb(64, 64, 176);
+}

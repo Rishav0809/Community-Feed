@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <!-- Favicon icon -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/assets/images/favicon.png"
+    />
+    <title><%= title %></title>
+
+    <!-- Custom CSS -->
+    <link href="/Extra Css/app-chat.css" rel="stylesheet" />
+    <link href="/dist/css/style.min.css" rel="stylesheet" />
+    <link href="/Extra Css/news.css" rel="stylesheet" />
+    <link href="/Extra Css/stocks.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+</html>
+
+<body>
+  <!-- ============================================================== -->
+  <!-- Preloader - style you can find in spinners.css -->
+  <!-- ============================================================== -->
+  <div class="preloader">
+    <div class="lds-ripple">
+      <div class="lds-pos"></div>
+      <div class="lds-pos"></div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- Main wrapper - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <div
+    id="main-wrapper"
+    data-theme="light"
+    data-layout="vertical"
+    data-navbarbg="skin6"
+    data-sidebartype="full"
+    data-sidebar-position="fixed"
+    data-header-position="fixed"
+    data-boxed-layout="full"
+  >
+    <%- include("components/topbar") -%> <%- include("components/sidebar") -%>
+
+    <div class="page-wrapper">
+      <div class="container-fluid mt-3">
+        <div
+          class="row"
+          style="
+            background-color: white;
+            padding: 20px 10px;
+            border-radius: 15px;
+            margin: auto;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+          "
+        >
+          <div class="col-7">
+            <h1 style="font-weight: 600; color: black; padding: 10px">
+              The Bull Cartel
+            </h1>
+            <p style="color: black; font-size: 18px; padding-left: 10px">
+              Companies with a good quarterly growth. Specially made to keep a
+              track of latest quarterly results. For best results, set an email
+              alert for the screen.
+            </p>
+          </div>
+          <div class="col-5">
+            <button type="button" class="email my-2 mr-3">
+              Get Email Updates
+              <i class="fas fa-bell px-2"></i>
+            </button>
+          </div>
+
+          <div class="card-body my-4" style="font-size: 15px">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">S.No.</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">CMP Rs.</th>
+                  <th scope="col">P/E</th>
+                  <th scope="col">Mar Cap Rs.Cr.</th>
+                  <th scope="col">Div Yld %</th>
+                  <th scope="col">NP Qtr Rs.Cr.</th>
+                  <th scope="col">Qtr Profit Var %</th>
+                  <th scope="col">Sales Qtr Rs.Cr.</th>
+                  <th scope="col">Qtr Sales Var %</th>
+                  <th scope="col">ROCE %</th>
+                  <th scope="col">ROE %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">S.No.</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">CMP Rs.</th>
+                  <th scope="col">P/E</th>
+                  <th scope="col">Mar Cap Rs.Cr.</th>
+                  <th scope="col">Div Yld %</th>
+                  <th scope="col">NP Qtr Rs.Cr.</th>
+                  <th scope="col">Qtr Profit Var %</th>
+                  <th scope="col">Sales Qtr Rs.Cr.</th>
+                  <th scope="col">Qtr Sales Var %</th>
+                  <th scope="col">ROCE %</th>
+                  <th scope="col">ROE %</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>Ksolves India</td>
+                  <td>397.00</td>
+                  <td>28.15</td>
+                  <td>470.68</td>
+                  <td>2.02</td>
+                  <td>5.44</td>
+                  <td>36.00</td>
+                  <td>16.11</td>
+                  <td>67.81</td>
+                  <td>139.47</td>
+                  <td>106.12</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="row footer py-5"></footer>
+  </div>
+
+  <%- include("layouts/footer") -%>
+</body>

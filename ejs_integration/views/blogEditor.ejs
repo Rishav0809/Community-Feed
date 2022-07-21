@@ -18,10 +18,12 @@
     <title><%= title %></title>
 
     <!-- Custom CSS -->
+
     <link href="/Extra Css/app-chat.css" rel="stylesheet" />
     <link href="/dist/css/style.min.css" rel="stylesheet" />
     <link href="/Extra Css/news.css" rel="stylesheet" />
 
+    <link href="/Extra Css/blogEditor.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link
       rel="stylesheet"
@@ -65,16 +67,57 @@
 
     <div class="page-wrapper">
       <div class="container-fluid mt-3">
-        <h1>Classic editor</h1>
-        <div id="editor">
-          <p>This is some sample content.</p>
-        </div>
-        <button id="submit">Submit</button>
-        
-        <script type="module" src="/ckeditor.js"></script>
+        <h2 class="ckheader">Create new blog post</h2>
+        <form action="/blogEditor">
+          <label for="header">Header</label>
+          <input
+            id="header"
+            type="text"
+            placeholder="Enter you header here"
+            onchange="saveHeader()"
+          />
+
+          <input type="file" id="image" accept="image/png, image/jpeg" />
+
+          <div id="editor" style="min-width: 500px">
+            <p>This is some sample content.</p>
+          </div>
+          <button type="button" id="submit">Submit</button>
+        </form>
       </div>
     </div>
   </div>
 
-  <%- include("layouts/footer") -%>
+  <script>
+    let editor, imageData, header;
 
+    ClassicEditor.create(document.querySelector("#editor"))
+      .then((newEditor) => {
+        editor = newEditor;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    const saveImage = () => {
+      imageData = document.getElementById("image").value;
+    };
+
+    const saveHeader = () => {
+      header = document.getElementById("header").value;
+    };
+
+    document.querySelector("#submit").addEventListener("click", () => {
+      const editorData = editor.getData();
+
+      const blogData = {
+        content: editorData,
+        cover: imageData,
+        header,
+      };
+
+      res.send(blogData);
+    });
+  </script>
+
+  <%- include("layouts/footer") -%>
+</body>
