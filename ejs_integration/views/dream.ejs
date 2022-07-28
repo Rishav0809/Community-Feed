@@ -1,0 +1,179 @@
+<%- include("layouts/header") -%>
+
+<body>
+  <!-- ============================================================== -->
+  <!-- Preloader - style you can find in spinners.css -->
+  <!-- ============================================================== -->
+  <div class="preloader">
+    <div class="lds-ripple">
+      <div class="lds-pos"></div>
+      <div class="lds-pos"></div>
+    </div>
+  </div>
+  <!-- ============================================================== -->
+  <!-- Main wrapper - style you can find in pages.scss -->
+  <!-- ============================================================== -->
+  <div
+    id="main-wrapper"
+    data-theme="light"
+    data-layout="vertical"
+    data-navbarbg="skin6"
+    data-sidebartype="full"
+    data-sidebar-position="fixed"
+    data-header-position="fixed"
+    data-boxed-layout="full"
+  >
+    <%- include("components/topbar") -%> <%- include("components/sidebar") -%>
+
+    <div class="page-wrapper">
+      <!-- ============================================================== -->
+      <!-- Bread crumb and right sidebar toggle -->
+      <!-- ============================================================== -->
+      <div class="page-breadcrumb">
+        <div class="row">
+          <div class="col-7 align-self-center">
+            <h4
+              class="page-title text-truncate text-dark font-weight-medium mb-1"
+            >
+              Dream Come True Calculator
+            </h4>
+
+            <div class="d-flex align-items-center">
+              <nav aria-label="breadcrumb">
+                <ol class="breadcrumb m-0 p-0">
+                  <li
+                    class="breadcrumb-item text-muted active"
+                    aria-current="page"
+                  >
+                    Find when your dream comes true !!
+                  </li>
+
+                  <li></li>
+                </ol>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Bread crumb and right sidebar toggle -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Container fluid  -->
+      <!-- ============================================================== -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-3"></div>
+          <div class="col-md-12 col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">
+                  Loan Amount
+                  <span
+                    style="
+                      float: right;
+                      font-weight: lighter;
+                      background-color: rgb(231, 231, 231);
+                      min-width: 120px;
+                      padding: 5px 4px;
+                      border-radius: 5px;
+                    "
+                    >₹
+                    <span id="displayFD" style="float: right"
+                      >2500000</span
+                    ></span
+                  >
+                </h4>
+
+                <form class="mt-3">
+                  <div class="form-group">
+                    <input
+                      type="range"
+                      id="fixed_deposit"
+                      class="form-control"
+                      min="500000"
+                      max="50000000"
+                      step="100000"
+                      value="2500000"
+                      onchange="displayMonthly()"
+                    />
+                  </div>
+                </form>
+              </div>
+
+              <div class="card-body">
+                <h4 class="card-title">
+                  Monthly Payment
+                  <span
+                    style="
+                      float: right;
+                      font-weight: lighter;
+                      background-color: rgb(231, 231, 231);
+                      min-width: 120px;
+                      padding: 5px 4px;
+                      border-radius: 5px;
+                    "
+                    >₹
+                    <span id="displayEMI" style="float: right">5000</span></span
+                  >
+                </h4>
+
+                <form class="mt-3">
+                  <div class="form-group">
+                    <input
+                      type="range"
+                      id="emi"
+                      class="form-control"
+                      min="1000"
+                      max="1000000"
+                      step="1000"
+                      value="5000"
+                      onchange="displayEMI()"
+                    />
+                  </div>
+                </form>
+
+                <div class="card-body">
+                  <h4 style="color: black; margin: 0 20%">
+                    Time Required :
+                    <span style="font-weight: 500" id="ansTime"></span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3"></div>
+        </div>
+      </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center"></footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+  </div>
+  <script src="/extra js/dream-calculator.js"></script>
+  <script>
+    calculateResult();
+
+    function displayMonthly() {
+      document.getElementById("displayFD").innerHTML =
+        document.getElementById("fixed_deposit").value;
+
+      calculateResult();
+    }
+
+    function displayEMI() {
+      document.getElementById("displayEMI").innerHTML =
+        document.getElementById("emi").value;
+
+      calculateResult();
+    }
+  </script>
+  <%- include("layouts/footer") -%>
+</body>

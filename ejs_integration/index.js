@@ -42,6 +42,28 @@ app.get("/specificStocks", (req, res) => {
   res.render("specificStocks", { title: "Specific Stocks" });
 });
 
+app.get("/loan", (req, res) => {
+  res.render("loanEMI", { title: "Loan EMI Calculator" });
+});
+
+app.get("/dream", (req, res) => {
+  res.render("dream", { title: "Dream Come True Calculator" });
+});
+
+app.get("/volatility", (req, res) => {
+  res.render("volatility", { title: "Risk to Volatile Calculator" });
+});
+
+app.get("/expenses", (req, res) => {
+  res.render("expenses", { title: "Expenses Calculator" });
+});
+
+app.get("/marquee", (req, res) => {
+  res.render("marquee", { title: "Marquee Stocks Index" });
+});
+app.get("/budget", (req, res) => {
+  res.render("budget", { title: "Budgeting/Saving Tool" });
+});
 app.post("/login", (req, res) => {
   console.log(req.credential);
 });
