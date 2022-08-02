@@ -11,7 +11,8 @@ body {
   font-family: "Open Sans", sans-serif;
   margin: auto;
 }
-.card {
+
+.daily .card {
   display: inline-block;
   height: 500px;
   background-color: #fff;
@@ -21,12 +22,12 @@ body {
   width: 300px;
   transition: all 0.3s ease-in-out;
 }
-.card-header img {
+.daily .card-header img {
   width: 100%;
   height: 200px;
   object-fit: cover;
 }
-.card-body {
+.daily .card-body {
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -51,20 +52,20 @@ body {
 .tag-pink {
   background-color: #c62bcd;
 }
-.card-body h4 {
+.daily .card-body h4 {
   margin: 10px 0;
   color: black;
   font-size: 20px;
   font-weight: 600;
 }
-.card-body p {
+.daily .card-body p {
   font-size: 14px;
   margin: 0 0 40px 0;
   font-weight: 500;
   color: rgb(70, 68, 68);
 }
 
-.card:hover {
+.daily .card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -157,7 +158,7 @@ a.button3:hover {
   }
 }
 
-.card-body h4:hover {
+.daily .card-body h4:hover {
   transform: scale(1.05);
   transition: all 0.2s;
   font-weight: 600;
