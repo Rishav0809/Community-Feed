@@ -1,6 +1,10 @@
 var express = require("express");
 var axios = require("axios");
 var API = require("./api");
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+var path = require("path");
+var fs = require("fs");
 
 var BSEAPI = API.BSE;
 var NSEAPI = API.NSE;
@@ -9,8 +13,6 @@ require("dotenv").config();
 require("./config/database").connect();
 
 var app = express();
-
-// National Stock Exchange (NSE) APIS
 
 // Get the stock market status (open/closed) - JSON
 // Example: http://localhost:3000/get_market_status
@@ -169,29 +171,71 @@ console.log(__dirname);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// News Mongo DB
+var multer = require("multer");
+
+var storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.fieldname + "-" + Date.now());
+  },
+});
+
+var newsModel = require("./models/newsblog");
+
+var upload = multer({ storage: storage });
+
 app.get("/", async (req, res) => {
   let ans;
   try {
+    const status = await axios.get("http://localhost:3000/get_market_status");
     ans = await axios.get("http://localhost:3000/nse/get_indices");
     ans = ans.data.data;
-    ans = ans[0].previousClose;
+
+    if (status.data.status === "closed") {
+      ans = ans[0].previousClose;
+    } else {
+      ans = ans[0].open;
+    }
   } catch (err) {
     console.log(`error ${err}`);
+    ans = "Data currently unavailable";
   }
+
+  newsModel.find({}, (err, items) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(items);
+    }
+  });
 
   res.render("index", { title: "News Feed", nifty: ans });
 });
 
-// const getNiftyData = async () => {
-// let res = await axios.get("/nse/get_indices", (req, res, next) => {
-//   NSEAPI.getIndices().then(function (response) {
-//     res.json(response.data);
-//   });
-// });
+app.post("/blogEditor", upload.single("image"), (req, res, next) => {
+  var obj = {
+    header: req.body.header,
+    content: req.body.content,
+    img: {
+      data: fs.readFileSync(
+        path.join(__dirname + "/uploads/" + req.file.filename)
+      ),
+      contentType: "image/png",
+    },
+  };
 
-//   let data = res.data;
-//   console.log(data);
-// };
+  newsModel.create(obj, (err, item) => {
+    if (err) {
+      console.log(err);
+    } else {
+      item.save();
+      res.redirect("/");
+    }
+  });
+});
 
 app.get("/community", (req, res) => {
   res.render("community", { title: "Community Feed" });

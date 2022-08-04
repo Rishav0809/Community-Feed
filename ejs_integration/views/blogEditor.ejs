@@ -68,56 +68,27 @@
     <div class="page-wrapper">
       <div class="container-fluid mt-3">
         <h2 class="ckheader">Create new blog post</h2>
-        <form action="/blogEditor">
+        <form action="/blogEditor" method="post" enctype="multipart/form-data">
           <label for="header">Header</label>
           <input
             id="header"
+            name="header"
             type="text"
             placeholder="Enter you header here"
-            onchange="saveHeader()"
           />
 
-          <input type="file" id="image" accept="image/png, image/jpeg" />
+          <input type="file" id="image" name="image" />
 
-          <div id="editor" style="min-width: 500px">
-            <p>This is some sample content.</p>
-          </div>
-          <button type="button" id="submit">Submit</button>
+          <textarea name="content" id="editor">
+            &lt;p&gt;This is some sample content.&lt;/p&gt;
+          </textarea>
+          <button type="submit" id="submit">Submit</button>
         </form>
       </div>
     </div>
   </div>
 
-  <script>
-    let editor, imageData, header;
-
-    ClassicEditor.create(document.querySelector("#editor"))
-      .then((newEditor) => {
-        editor = newEditor;
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-    const saveImage = () => {
-      imageData = document.getElementById("image").value;
-    };
-
-    const saveHeader = () => {
-      header = document.getElementById("header").value;
-    };
-
-    document.querySelector("#submit").addEventListener("click", () => {
-      const editorData = editor.getData();
-
-      const blogData = {
-        content: editorData,
-        cover: imageData,
-        header,
-      };
-
-      res.send(blogData);
-    });
-  </script>
+  <script src="/extra js/blogEditor.js"></script>
 
   <%- include("layouts/footer") -%>
 </body>
