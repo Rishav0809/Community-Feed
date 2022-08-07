@@ -208,11 +208,9 @@ app.get("/", async (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log(items);
+      res.render("index", { title: "News Feed", nifty: ans, items: items });
     }
   });
-
-  res.render("index", { title: "News Feed", nifty: ans });
 });
 
 app.post("/blogEditor", upload.single("image"), (req, res, next) => {

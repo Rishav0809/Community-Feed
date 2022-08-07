@@ -110,21 +110,16 @@
               <div class="carousel-item active mb-5">
                 <div class="row" style="width: 100%">
                   <div class="col-7">
-                    <h3 class="carousel-heading">Market has its risks.</h3>
+                    <h3 class="carousel-heading"><%= items[0].header %></h3>
 
-                    <p class="carousel-content">
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      Molestias consequuntur sequi suscipit iure fuga ea!Lorem
-                      ipsum dolor sit amet consectetur adipisicing elit.
-                      Molestias consequuntur sequi suscipit iure fuga ea!Lorem
-                      ipsum dolor sit amet consectetur adipisicing
-                    </p>
+                    <p class="carousel-content px-3"><%- items[0].content %></p>
 
                     <a href="something" class="button3 bouncy">Read More</a>
                   </div>
                   <div class="col-5 pt-4 pt-4">
                     <img
-                      src="https://dynaimage.cdn.cnn.com/cnn/q_auto,w_412,c_fill,g_auto,h_232,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F200305114843-01-edge-hudson-yards-observation-deck.jpg"
+                      src="data:image/<%=items[0].img.contentType%>;base64,
+                      <%=items[0].img.data.toString('base64')%>"
                       alt=""
                     />
                   </div>
