@@ -235,8 +235,10 @@ app.post("/blogEditor", upload.single("image"), (req, res, next) => {
   });
 });
 
-app.get("/community", (req, res) => {
-  res.render("community", { title: "Community Feed" });
+app.get("/community", async (req, res) => {
+  const posts = await axios.get("http://localhost:5000/community");
+  console.log(posts.data);
+  res.render("community", { title: "Community Feed", posts: posts.data.posts });
 });
 
 app.get("/sip", (req, res) => {

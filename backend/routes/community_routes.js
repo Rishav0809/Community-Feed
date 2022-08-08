@@ -1,14 +1,14 @@
-const express = require('express');
+const express = require("express");
 const {
   getAllPosts,
   createPost,
-} = require('../controllers/community_controller');
+} = require("../controllers/community_controller");
 const router = express.Router();
 
 //get
-router.get('/', getAllPosts);
+router.get("/community", getAllPosts);
 
 //post
-router.post('/createpost/:id', createPost);
+router.post("/community/createpost/:id", createPost);
 
 module.exports = router;
