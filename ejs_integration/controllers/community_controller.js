@@ -24,7 +24,7 @@ exports.getAllPosts = async (req, res, next) => {
             return res.status(404).json({ message: "No posts found" });
           }
         });
-      console.log(posts.title);
+
       return res
         .status(200)
         .render("community", { title: "Community Feed", posts });
@@ -34,7 +34,7 @@ exports.getAllPosts = async (req, res, next) => {
 //create post on community page
 exports.createPost = async (req, res, next) => {
   const id = req.params.id;
-  // console.log(id);
+  console.log(id);
   const { title, text } = req.body;
   const post = new communityPost({
     title,
@@ -47,6 +47,7 @@ exports.createPost = async (req, res, next) => {
   }
 
   const userRelated = await User.findOne({ _id: id });
+
   userRelated.posts.push(post);
   post.user.push(userRelated);
   try {
@@ -55,5 +56,6 @@ exports.createPost = async (req, res, next) => {
   } catch (err) {
     console.log(err);
   }
+  console.log(post.user);
   return res.status(201).json({ post });
 };

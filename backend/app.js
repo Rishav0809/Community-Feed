@@ -13,6 +13,10 @@ const commentRoutes = require("./routes/comment_router");
 const { dirname } = require("path");
 
 //app use specifications
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "../ejs_integration/views"));
+app.use(express.static(path.resolve(__dirname, "../ejs_integration/public")));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -28,10 +32,11 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 //routes
 
 //user route
-app.use(homeRoutes);
-app.use(userRouter);
-app.use(communityRoutes);
-app.use(commentRoutes);
+app.use("/", homeRoutes);
+app.use("/community", communityRoutes);
+app.use("/api/user", userRouter);
+app.use("/api/community", communityRoutes);
+app.use("/api/post/:id", commentRoutes);
 
 //running the server
 

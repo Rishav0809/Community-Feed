@@ -6,9 +6,17 @@ var mongoose = require("mongoose");
 var path = require("path");
 var fs = require("fs");
 
+//require Routes
+const homeRoutes = require("./routes/home");
+const userRouter = require("./routes/user_routes");
+const communityRoutes = require("./routes/community_routes");
+const commentRoutes = require("./routes/comment_router");
+
+//stock routes
 var BSEAPI = API.BSE;
 var NSEAPI = API.NSE;
 
+//mongo connect
 require("dotenv").config();
 require("./config/database").connect();
 
@@ -171,9 +179,15 @@ console.log(__dirname);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// News Mongo DB
-var multer = require("multer");
+//routes
+app.use("/", homeRoutes);
+app.use("/community", communityRoutes);
+app.use("/api/user", userRouter);
+// app.use("/api/community", communityRoutes);
+app.use("/api/post/:id", commentRoutes);
 
+// Image upload for blog editor
+var multer = require("multer");
 var storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "uploads");
@@ -182,37 +196,9 @@ var storage = multer.diskStorage({
     cb(null, file.fieldname + "-" + Date.now());
   },
 });
-
-var newsModel = require("./models/newsblog");
-
 var upload = multer({ storage: storage });
 
-app.get("/", async (req, res) => {
-  let ans;
-  try {
-    const status = await axios.get("http://localhost:3000/get_market_status");
-    ans = await axios.get("http://localhost:3000/nse/get_indices");
-    ans = ans.data.data;
-
-    if (status.data.status === "closed") {
-      ans = ans[0].previousClose;
-    } else {
-      ans = ans[0].open;
-    }
-  } catch (err) {
-    console.log(`error ${err}`);
-    ans = "Data currently unavailable";
-  }
-
-  newsModel.find({}, (err, items) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.render("index", { title: "News Feed", nifty: ans, items: items });
-    }
-  });
-});
-
+//Views Routes
 app.post("/blogEditor", upload.single("image"), (req, res, next) => {
   var obj = {
     header: req.body.header,
@@ -233,12 +219,6 @@ app.post("/blogEditor", upload.single("image"), (req, res, next) => {
       res.redirect("/");
     }
   });
-});
-
-app.get("/community", async (req, res) => {
-  const posts = await axios.get("http://localhost:5000/community");
-  console.log(posts.data);
-  res.render("community", { title: "Community Feed", posts: posts.data.posts });
 });
 
 app.get("/sip", (req, res) => {
