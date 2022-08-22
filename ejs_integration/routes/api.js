@@ -1,17 +1,10 @@
-const express = require('express');
-const passport = require('passport');
-require('../config/passport')(passport);
+const express = require("express");
+const passport = require("passport");
+require("../config/passport")(passport);
 var axios = require("axios");
-const { ensureAuth, ensureGuest } = require('../middleware/auth');
+const { ensureAuth, ensureGuest } = require("../middleware/auth");
 const router = express.Router();
 var API = require("../api");
-
-
-
-
-
-
-
 
 var BSEAPI = API.BSE;
 var NSEAPI = API.NSE;

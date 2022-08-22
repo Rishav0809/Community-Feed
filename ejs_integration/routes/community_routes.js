@@ -3,12 +3,13 @@ const {
   getAllPosts,
   createPost,
 } = require("../controllers/community_controller");
+const { ensureAuthenticated } = require("../middleware/auth");
 const router = express.Router();
 
 //get
-router.get("/", getAllPosts);
+router.get("/", ensureAuthenticated, getAllPosts);
 
 //post
-router.post("/createpost/:id", createPost);
+router.post("/createpost/:id", ensureAuthenticated, createPost);
 
 module.exports = router;

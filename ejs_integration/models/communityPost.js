@@ -1,12 +1,6 @@
-const mongoose = require('mongoose');
-const User = require('../models/user');
+const mongoose = require("mongoose");
 
 const postSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    trim: true,
-    required: true,
-  },
   likes: {
     type: Number,
     default: 0,
@@ -23,20 +17,20 @@ const postSchema = new mongoose.Schema({
   user: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
+      ref: "User",
     },
   ],
   comments: [
     {
       type: mongoose.Schema.Types.Mixed,
-      ref: 'Comment',
+      ref: "Comment",
       default: [],
     },
   ],
 });
 
-postSchema.virtual('url').get(function () {
-  return '/post/' + this._id;
+postSchema.virtual("url").get(function () {
+  return "/post/" + this._id;
 });
 
-module.exports = mongoose.model('Post', postSchema);
+module.exports = mongoose.model("Post", postSchema);

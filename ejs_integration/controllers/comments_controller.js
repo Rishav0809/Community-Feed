@@ -3,11 +3,10 @@ const Post = require("../models/communityPost");
 const User = require("../models/user");
 
 exports.createComment = async (req, res, next) => {
-  console.log("This is the result of req.params");
-  console.log(req.params);
   const postid = req.params.postid;
   const userid = req.params.userid;
   const userRelated = await User.findOne({ _id: userid });
+  console.log(userRelated);
 
   const comment = new Comment({
     text: req.body.comment,
@@ -24,13 +23,13 @@ exports.createComment = async (req, res, next) => {
   console.log(postRelated);
 
   postRelated.comments.push(comment);
-  comment.post.push(postRelated);
-  comment.user.push(userRelated);
+  // comment.post.push(postRelated);
+  // comment.user.push(userRelated);
   try {
     await postRelated.save();
     await comment.save();
+    res.redirect("/community");
   } catch (err) {
     console.log(err);
   }
-  return res.status(200).json({ postRelated });
 };

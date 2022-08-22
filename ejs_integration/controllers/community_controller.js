@@ -4,7 +4,6 @@ const communityPost = require("../models/communityPost");
 const User = require("../models/user");
 
 exports.getAllPosts = async (req, res, next) => {
-  let posts;
   communityPost
     .find()
     .populate("user")
@@ -25,19 +24,22 @@ exports.getAllPosts = async (req, res, next) => {
           }
         });
 
-      return res
-        .status(200)
-        .render("community", { title: "Community Feed", posts });
+      return res.status(200).render("community", {
+        title: "Community Feed",
+        posts,
+        user: req.user,
+      });
     });
 };
 
-//create post on community page
+// create post on community page
+
 exports.createPost = async (req, res, next) => {
   const id = req.params.id;
   console.log(id);
-  const { title, text } = req.body;
+  console.log(req.body);
+  const { text } = req.body;
   const post = new communityPost({
-    title,
     text,
   });
   try {
@@ -53,9 +55,9 @@ exports.createPost = async (req, res, next) => {
   try {
     await userRelated.save();
     await post.save();
+    res.redirect("/community");
   } catch (err) {
     console.log(err);
   }
   console.log(post.user);
-  return res.status(201).json({ post });
 };
