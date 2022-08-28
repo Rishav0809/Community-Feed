@@ -20,7 +20,6 @@ module.exports = (passport) => {
       },
       async function (accessToken, refreshToken, profile, done) {
         try {
-          console.log("reaching this part.");
           let user = await User.findOne({ googleId: profile.id });
           if (user) {
             console.log("user is there");
@@ -31,6 +30,7 @@ module.exports = (passport) => {
               googleId: profile.id,
               name: profile.displayName,
               photo: profile.photos[0].value,
+              email: profile.email,
             };
             user = await User.create(newUser);
             console.log("creating new user");

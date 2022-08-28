@@ -6,6 +6,7 @@ const User = require("../models/user");
 exports.getAllPosts = async (req, res, next) => {
   communityPost
     .find()
+    .sort({ date: -1 })
     .populate("user")
     .populate("comments")
     .exec((err, posts) => {
@@ -36,8 +37,6 @@ exports.getAllPosts = async (req, res, next) => {
 
 exports.createPost = async (req, res, next) => {
   const id = req.params.id;
-  console.log(id);
-  console.log(req.body);
   const { text } = req.body;
   const post = new communityPost({
     text,
@@ -59,5 +58,29 @@ exports.createPost = async (req, res, next) => {
   } catch (err) {
     console.log(err);
   }
-  console.log(post.user);
+};
+
+exports.updatePost = async (req, res) => {
+  try {
+    const post = await communityPost.findOne({
+      _id: req.params.postid,
+    });
+    const userRelated = await User.findOne({ _id: req.params.userid });
+
+    if (!post) {
+      return res.status(404).send();
+    }
+
+    if (!userRelated.likedPosts.find((o) => o._id.equals(req.params.postid))) {
+      post.likes++;
+      userRelated.likedPosts.push(post);
+      await userRelated.save();
+      await post.save();
+    }
+
+    res.redirect("/community");
+  } catch (e) {
+    console.log(e);
+    res.status(400).send(e);
+  }
 };

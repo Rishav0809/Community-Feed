@@ -1,0 +1,233 @@
+<%- include("layouts/header") -%>
+
+<body>
+  <div
+    id="main-wrapper"
+    data-theme="light"
+    data-layout="vertical"
+    data-navbarbg="skin6"
+    data-sidebartype="full"
+    data-sidebar-position="fixed"
+    data-header-position="fixed"
+    data-boxed-layout="full"
+  >
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <%- include("components/topbar") -%>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <%- include("components/sidebar") -%>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+      <!-- ============================================================== -->
+      <!-- Bread crumb and right sidebar toggle -->
+      <!-- ============================================================== -->
+      <div class="page-breadcrumb">
+        <div class="row">
+          <div class="col-7 align-self-center">
+            <h4
+              class="page-title text-truncate text-dark font-weight-medium mb-1"
+            >
+              My Profile
+            </h4>
+          </div>
+        </div>
+      </div>
+      <!-- ============================================================== -->
+      <!-- End Bread crumb and right sidebar toggle -->
+      <!-- ============================================================== -->
+      <!-- ============================================================== -->
+      <!-- Container fluid  -->
+      <!-- ============================================================== -->
+      <div class="container">
+        <div class="main-body" style="color: black">
+          <div class="row gutters-sm">
+            <div class="col-md-4 mb-3">
+              <div class="card">
+                <div class="card-body">
+                  <div
+                    class="d-flex flex-column align-items-center text-center"
+                  >
+                    <img
+                      src="<%= user.photo %>"
+                      alt="Admin"
+                      class="rounded-circle"
+                      width="150"
+                    />
+                    <div class="mt-3 mb-2">
+                      <h3 class="mb-4"><%= user.name %></h3>
+
+                      <button class="btn btn-outline-primary">Message</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Full Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary"><%= user.name %></div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Email</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary"><%= user.email %></div>
+                  </div>
+                  <hr />
+
+                  <h3 class="pt-4 mb-1 align-items-center text-center">
+                    No of posts
+                  </h3>
+                  <h3
+                    class="pt-2 pb-5 font-size-sm align-items-center text-center"
+                    style="font-weight: 500"
+                  >
+                    <%= user.posts.length %>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h4 class="page-title text-dark font-weight-medium mb-1 text-center">
+            My Posts
+          </h4>
+
+          <!-- Post -->
+          <% posts.forEach(post=>{ %>
+          <div class="card">
+            <div class="card-header">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="mr-2">
+                    <img
+                      class="rounded-circle"
+                      width="45"
+                      src="<%= user.photo %>"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ml-2">
+                    <div class="h5 m-0 font-weight-bold"><%= user.name %></div>
+                    <span class="text-muted"><%= post.date %> </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="text-dark"><%= post.text %></h3>
+            </div>
+            <div class="card-footer">
+              <div>
+                <i class="fas fa-heart text-danger px-1"></i><%= post.likes %>
+              </div>
+            </div>
+
+            <div class="card-footer">
+              <div class="form-group shadow-textarea comment-area">
+                <form
+                  action="/post/create/<%= post.id %>/<%= user.id %>/"
+                  method="post"
+                >
+                  <textarea
+                    name="comment"
+                    id="textarea1"
+                    class="form-control z-depth-1"
+                    style="
+                      border-style: none;
+                      border-color: Transparent;
+                      overflow: auto;
+                      resize: none;
+                      background-color: rgba(245, 250, 254, 0.03);
+                    "
+                    id="exampleFormControlTextarea6"
+                    rows="1"
+                    placeholder="Write your comment here"
+                  ></textarea>
+
+                  <button type="submit" class="post-button mr-5">Post</button>
+                </form>
+
+                <br /><br />
+
+                <div class="row mt-0" style="margin: 10px">
+                  <div class="col-md-12">
+                    <div class="card">
+                      <div class="row no-gutters">
+                        <div class="chat-box position-relative">
+                          <ul class="chat-list list-style-none px-3 pt-3">
+                            <!-- Comment Row -->
+                            <% post.comments.forEach(comment=>{ %>
+                            <li class="commented-section mt-2 p-3">
+                              <div
+                                class="d-flex flex-row align-items-center commented-user"
+                              >
+                                <div class="chat-img d-inline-block p-3">
+                                  <img
+                                    src="<%= comment.user.photo %>"
+                                    alt="user"
+                                    class="rounded-circle"
+                                    width="45"
+                                  />
+                                </div>
+                                <div class="comment-name mr-2 mt-2">
+                                  <%= comment.username %>
+                                </div>
+                              </div>
+                              <div class="comment-text-sm ml-4">
+                                <%= comment.text %>
+                              </div>
+                              <div class="flex-row px-4 pt-2">
+                                <button class="ml-auto mt-1 reply">
+                                  Reply
+                                </button>
+                              </div>
+
+                              <% }) %>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <a
+                    class="btn btn-raised btn-danger"
+                    href="/profile/delete/<%= post.id %>/<%= user.id %>"
+                    >Delete</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!--Comment Section -->
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <footer class="footer text-center"></footer>
+      <!-- ============================================================== -->
+      <!-- End footer -->
+      <!-- ============================================================== -->
+    </div>
+  </div>
+
+  <%- include("layouts/footer") -%>
+</body>

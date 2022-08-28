@@ -96,11 +96,11 @@
                     <img
                       class="rounded-circle"
                       width="45"
-                      src="/assets/images/users/5.jpg"
+                      src="<%= user.photo %>"
                       alt=""
                     />
                   </span>
-                  <span class="h5 m-2 font-weight-bold">Jason Doe</span>
+                  <span class="h5 m-2 font-weight-bold"><%= user.name %></span>
                 </div>
                 <form
                   action="/community/createpost/<%= user.id %>"
@@ -136,7 +136,7 @@
                   <img
                     class="rounded-circle"
                     width="45"
-                    src="/assets/images/users/5.jpg"
+                    src="<%= user.photo %>"
                     alt=""
                   />
                 </div>
@@ -165,7 +165,7 @@
                   <img
                     class="rounded-circle"
                     width="45"
-                    src="/assets/images/users/5.jpg"
+                    src="<%= post.user[0].photo %>"
                     alt=""
                   />
                 </div>
@@ -183,7 +183,13 @@
           </div>
           <div class="card-footer">
             <div>
-              <i class="fas fa-heart text-danger px-1"></i><%= post.likes %>
+              <a href="/community/post/<%= post._id %>/<%= user._id %>"
+                ><i
+                  onclick="myFunction(this)"
+                  class="fas fa-heart text-danger px-1"
+                ></i
+                ><%= post.likes %></a
+              >
             </div>
           </div>
 
@@ -227,7 +233,7 @@
                           >
                             <div class="chat-img d-inline-block p-3">
                               <img
-                                src="/assets/images/users/4.jpg"
+                                src="<%= comment.user.photo %>"
                                 alt="user"
                                 class="rounded-circle"
                                 width="45"
@@ -243,150 +249,8 @@
                           <div class="flex-row px-4 pt-2">
                             <button class="ml-auto mt-1 reply">Reply</button>
                           </div>
-                          <!-- <div class="reply-section">
-                              <div class="replies">
-                                <ul>
-                                  <li class="commented-section mt-2 p-3">
-                                    <div
-                                      class="d-flex flex-row align-items-center commented-user"
-                                    >
-                                      <div class="chat-img d-inline-block p-3">
-                                        <img
-                                          src="/assets/images/users/2.jpg"
-                                          alt="user"
-                                          class="rounded-circle"
-                                          width="45"
-                                        />
-                                      </div>
-                                      <div class="comment-name mr-2 mt-2">
-                                        Samoya Johns
-                                      </div>
-                                    </div>
-                                    <div class="comment-text-sm ml-4">
-                                      <div>True that.</div>
-                                    </div>
-                                    <div class="reply-section">
-                                      <div class="flex-row px-4 pt-2">
-                                        <button class="ml-auto mt-1 reply">
-                                          Reply
-                                        </button>
-                                      </div>
-                                    </div>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div> -->
                         </li>
                         <% }) %>
-                        <!-- Comment Row -->
-
-                        <!-- <li class="commented-section mt-2 p-3">
-                          <div
-                            class="d-flex flex-row align-items-center commented-user"
-                          >
-                            <div class="chat-img d-inline-block p-3">
-                              <img
-                                src="/assets/images/users/2.jpg"
-                                alt="user"
-                                class="rounded-circle"
-                                width="45"
-                              />
-                            </div>
-                            <div class="comment-name mr-2 mt-2">
-                              Samoya Johns
-                            </div>
-                          </div>
-                          <div class="comment-text-sm ml-4">
-                            <div>
-                              With inflation squeezing the budgets of people of
-                              Canada, it took only a minute for politicians to
-                              blame price increases on big corporations. U.S.
-                              President Biden often accuses food distributors,
-                              baby formula producers, shipping companies and gas
-                              retailers of price gouging. He continues to push
-                              his stalled agenda: tax the rich and corporations
-                              to pay for new social benefits and climate-change
-                              subsidies.
-                            </div>
-                          </div>
-                          <div class="reply-section">
-                            <div class="flex-row px-4 pt-2">
-                              <button class="ml-auto mt-1 reply">Reply</button>
-                            </div>
-                          </div>
-                        </li> -->
-                        <!-- Comment Row -->
-
-                        <!-- <li class="commented-section mt-2 p-3">
-                          <div
-                            class="d-flex flex-row align-items-center commented-user"
-                          >
-                            <div class="chat-img d-inline-block p-3">
-                              <img
-                                src="/assets/images/users/3.jpg"
-                                alt="user"
-                                class="rounded-circle"
-                                width="45"
-                              />
-                            </div>
-                            <div class="comment-name mr-2 mt-2">Dohn Joe</div>
-                          </div>
-                          <div class="comment-text-sm ml-4">
-                            <div>
-                              With inflation squeezing Canadians’ budgets, it
-                              took only a minute for politicians to blame price
-                              increases on big corporations. U.S. President
-                              Biden often accuses food distributors, baby
-                              formula producers, shipping companies and gas
-                              retailers of price gouging. He continues to push
-                              his stalled agenda: tax the rich and corporations
-                              to pay for new social benefits and climate-change
-                              subsidies.
-                            </div>
-                          </div>
-                          <div class="reply-section">
-                            <div class="flex-row px-4 pt-2">
-                              <button class="ml-auto mt-1 reply">Reply</button>
-                            </div>
-                          </div>
-                        </li> -->
-
-                        <!-- Comment Row -->
-
-                        <!-- <li class="commented-section mt-2 p-3">
-                          <div
-                            class="d-flex flex-row align-items-center commented-user"
-                          >
-                            <div class="chat-img d-inline-block p-3">
-                              <img
-                                src="/assets/images/users/7.jpg"
-                                alt="user"
-                                class="rounded-circle"
-                                width="45"
-                              />
-                            </div>
-                            <div class="comment-name mr-2 mt-2">
-                              Reed Richards
-                            </div>
-                          </div>
-                          <div class="comment-text-sm ml-4">
-                            <div>
-                              Even if market concentration did lead to higher
-                              consumer prices, it is not clear that inflation —
-                              year-over-year increases in the general price
-                              level — is more likely in concentrated markets
-                              than competitive ones. The economics literature on
-                              industrial organization is replete with examples
-                              suggesting that in concentrated markets pricing
-                              tends to be rigid.
-                            </div>
-                          </div>
-                          <div class="reply-section">
-                            <div class="flex-row px-4 pt-2">
-                              <button class="ml-auto mt-1 reply">Reply</button>
-                            </div>
-                          </div>
-                        </li> -->
                       </ul>
                     </div>
                   </div>
@@ -412,11 +276,9 @@
     <!-- ============================================================== -->
   </div>
   <script>
-    let post_content;
-    const save = () => {
-      post_content = document.getElementById("post_content").value;
-      console.log(post_content || "aman");
-    };
+    // function myFunction(x) {
+    //   x.classList.toggle("fa-thumbs-down");
+    // }
   </script>
   <%- include("layouts/footer") -%>
 </body>

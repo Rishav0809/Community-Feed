@@ -6,7 +6,6 @@ exports.createComment = async (req, res, next) => {
   const postid = req.params.postid;
   const userid = req.params.userid;
   const userRelated = await User.findOne({ _id: userid });
-  console.log(userRelated);
 
   const comment = new Comment({
     text: req.body.comment,
@@ -15,16 +14,16 @@ exports.createComment = async (req, res, next) => {
 
   try {
     await comment.save();
+    console.log(comment);
   } catch (err) {
     console.log(err);
   }
 
-  const postRelated = await Post.findOne({ _id: `${postid}` });
-  console.log(postRelated);
+  const postRelated = await Post.findOne({ _id: postid });
 
   postRelated.comments.push(comment);
-  // comment.post.push(postRelated);
-  // comment.user.push(userRelated);
+  comment.post.push(postRelated);
+  comment.user.push(userRelated);
   try {
     await postRelated.save();
     await comment.save();

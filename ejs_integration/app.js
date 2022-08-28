@@ -10,6 +10,7 @@ var passport = require("passport");
 //require Routes
 const homeRoutes = require("./routes/index");
 const authRoutes = require("./routes/user");
+const userRoutes = require("./routes/userRoutes");
 const apiRoutes = require("./routes/api");
 const communityRoutes = require("./routes/community_routes");
 const commentRoutes = require("./routes/comment_router");
@@ -47,6 +48,7 @@ app.use("/", homeRoutes);
 app.use("/auth", authRoutes);
 app.use("/api", apiRoutes);
 app.use("/community", communityRoutes);
+app.use("/profile", userRoutes);
 app.use("/post/", commentRoutes);
 
 var fs = require("fs");

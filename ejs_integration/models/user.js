@@ -13,12 +13,24 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
   isAdmin: {
     type: Boolean,
     default: false,
     required: false,
   },
+
   posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+    },
+  ],
+
+  likedPosts: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Post",
