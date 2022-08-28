@@ -25,7 +25,7 @@ const postSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.Mixed,
       ref: "Comment",
-      default: [],
+      $sort: { date: -1 },
     },
   ],
 });

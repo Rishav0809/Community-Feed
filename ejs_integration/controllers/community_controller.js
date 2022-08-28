@@ -16,6 +16,7 @@ exports.getAllPosts = async (req, res, next) => {
       }
       comments
         .find()
+        .sort({ date: -1 })
         .populate("user")
         .populate("post")
         .exec((err, comments) => {
