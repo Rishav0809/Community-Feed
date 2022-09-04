@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 var newsModel = require("../models/newsblog");
 var upload = multer({ storage: storage });
 
-router.get("/", ensureAuthenticated, async (req, res) => {
+router.get("/", async (req, res) => {
   console.log(req.user);
   let ans;
   try {
@@ -46,59 +46,60 @@ router.get("/", ensureAuthenticated, async (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.render("index", {
-        title: "News Feed",
-        nifty: ans,
-        items: items,
-        user: req.user,
-      });
+      // res.render("index", {
+      //   title: "News Feed",
+      //   nifty: ans,
+      //   items: items,
+      //   user: req.user,
+      // });
+      res.redirect("https://projectnewsfeed.blogspot.com/");
     }
   });
 });
 
-router.get("/sip", ensureAuthenticated, (req, res) => {
+router.get("/sip", (req, res) => {
   res.render("sip", { title: "SIP Calculator", user: req.user });
 });
 
-router.get("/fd", ensureAuthenticated, (req, res) => {
+router.get("/fd", (req, res) => {
   res.render("fd", { title: "FD Calculator", user: req.user });
 });
 
-router.get("/blogEditor", ensureAuthenticated, (req, res) => {
+router.get("/blogEditor", (req, res) => {
   res.render("blogEditor", { title: "Blog Editor", user: req.user });
 });
 
-router.get("/stocks", ensureAuthenticated, (req, res) => {
+router.get("/stocks", (req, res) => {
   res.render("stocks", { title: "Popular Stocks", user: req.user });
 });
 
-router.get("/specificStocks", ensureAuthenticated, (req, res) => {
+router.get("/specificStocks", (req, res) => {
   res.render("specificStocks", { title: "Specific Stocks", user: req.user });
 });
 
-router.get("/loan", ensureAuthenticated, (req, res) => {
+router.get("/loan", (req, res) => {
   res.render("loanEMI", { title: "Loan EMI Calculator", user: req.user });
 });
 
-router.get("/dream", ensureAuthenticated, (req, res) => {
+router.get("/dream", (req, res) => {
   res.render("dream", { title: "Dream Come True Calculator", user: req.user });
 });
 
-router.get("/volatility", ensureAuthenticated, (req, res) => {
+router.get("/volatility", (req, res) => {
   res.render("volatility", {
     title: "Risk to Volatile Calculator",
     user: req.user,
   });
 });
 
-router.get("/expenses", ensureAuthenticated, (req, res) => {
+router.get("/expenses", (req, res) => {
   res.render("expenses", { title: "Expenses Calculator", user: req.user });
 });
 
-router.get("/marquee", ensureAuthenticated, (req, res) => {
+router.get("/marquee", (req, res) => {
   res.render("marquee", { title: "Marquee Stocks Index", user: req.user });
 });
-router.get("/budget", ensureAuthenticated, (req, res) => {
+router.get("/budget", (req, res) => {
   res.render("budget", { title: "Budgeting/Saving Tool", user: req.user });
 });
 

@@ -69,7 +69,7 @@
         <!-- ============================================================== -->
         <li class="nav-item d-none d-md-block">
           <a class="nav-link" href="javascript:void(0)">
-            <form>
+            <!-- <form>
               <div class="customize-input">
                 <input
                   class="form-control custom-shadow custom-radius border-0 bg-white"
@@ -79,13 +79,29 @@
                 />
                 <i class="form-control-icon" data-feather="search"></i>
               </div>
-            </form>
+            </form> -->
           </a>
         </li>
         <!-- ============================================================== -->
         <!-- User profile and search -->
         <!-- ============================================================== -->
+        
+        <!-- <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="javascript:void(0)"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <button class="btn btn-primary">Login</button>
+          </a>
+          </div>
+        </li> -->
+        
+        
         <li class="nav-item dropdown">
+        <% if(user) { %>
           <a
             class="nav-link dropdown-toggle"
             href="javascript:void(0)"
@@ -117,6 +133,9 @@
               ><i data-feather="power" class="svg-icon mr-2 ml-1"></i> Logout</a
             >
           </div>
+          <% }else{ %>
+           <a href="/auth"><button class="btn btn-primary">Login</button></a>
+            <% } %>
         </li>
         <!-- ============================================================== -->
         <!-- User profile and search -->

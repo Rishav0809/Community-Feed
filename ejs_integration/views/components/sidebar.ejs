@@ -4,20 +4,21 @@
     <!-- Sidebar navigation-->
     <nav class="sidebar-nav">
       <ul id="sidebarnav">
-
+<% if(user){%>
 <% if(user.isAdmin){ %>
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="/blogEditor" aria-expanded="false"
+          <a class="sidebar-link sidebar-link" href="https://www.blogger.com/blog/posts/5466843617197818617" aria-expanded="false"
             ><i class="far fa-plus-square"></i
             ><span class="hide-menu">Create Post</span></a
           >
         </li>
 <% } %>
+<% } %>
 
 
 
         <li class="sidebar-item">
-          <a class="sidebar-link sidebar-link" href="/" aria-expanded="false"
+          <a class="sidebar-link sidebar-link" href="https://projectnewsfeed.blogspot.com/" aria-expanded="false"
             ><i class="fas fa-newspaper"></i
             ><span class="hide-menu">News Feed</span></a
           >
