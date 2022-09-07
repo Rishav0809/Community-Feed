@@ -8,7 +8,7 @@ const { ensureAuthenticated } = require("../middleware/auth");
 const router = express.Router();
 
 //get
-router.get("/", ensureAuthenticated, getAllPosts);
+router.get("/", getAllPosts);
 
 //post
 router.post("/createpost/:id", ensureAuthenticated, createPost);

@@ -69,6 +69,7 @@
         <!-- Button trigger modal -->
 
         <!-- Modal -->
+        <% if(user) { %>
         <div
           class="modal fade"
           id="exampleModal"
@@ -90,6 +91,42 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
+              <!-- <% if(user) { %>
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="javascript:void(0)"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img
+                    src="<%= user.photo %>"
+                    alt="user"
+                    class="rounded-circle"
+                    width="40"
+                  />
+                  <span class="ml-2 d-none d-lg-inline-block">
+                    <span class="text-dark"><%= user.name %></span>
+                    <i data-feather="chevron-down" class="svg-icon"></i
+                  ></span>
+                </a>
+                <div
+                  class="dropdown-menu dropdown-menu-right user-dd animated flipInY"
+                >
+                  <a class="dropdown-item" href="/profile"
+                    ><i data-feather="user" class="svg-icon mr-2 ml-1"></i> My
+                    Profile</a
+                  >
+                  <div class="dropdown-divider"></div>
+      
+                  <a class="dropdown-item" href="/auth/logout"
+                    ><i data-feather="power" class="svg-icon mr-2 ml-1"></i> Logout</a
+                  >
+                </div>
+                <% }else{ %>
+                 <a href="/auth"><button class="btn btn-primary">Login</button></a>
+                  <% } %>
+              </li> -->
               <div class="modal-body">
                 <div>
                   <span>
@@ -102,6 +139,7 @@
                   </span>
                   <span class="h5 m-2 font-weight-bold"><%= user.name %></span>
                 </div>
+
                 <form
                   action="/community/createpost/<%= user.id %>"
                   method="post"
@@ -127,10 +165,12 @@
             </div>
           </div>
         </div>
+        <% } %>
 
         <div class="card gedf-card">
           <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
+              <% if(user) { %>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="mr-2">
                   <img
@@ -151,26 +191,35 @@
                   What's on your mind?
                 </button>
               </div>
+              <% }else{ %>
+              <div class="ml-1 posting">
+                <a href="/auth"
+                  ><button type="button" class="post-input">
+                    What's on your mind?
+                  </button></a
+                >
+              </div>
+
+              <% } %>
             </div>
           </div>
         </div>
 
         <!-- Post -->
-        
-        <% posts.forEach(post=>{ %>
-          <% if(typeof post.user[0] == 'undefined'){ %>
-          <% } else{ %>
+
+        <% posts.forEach(post=>{ %> <% if(typeof post.user[0] == 'undefined'){
+        %> <% } else{ %>
         <div class="card gedf-card">
           <div class="card-header">
             <div class="d-flex justify-content-between align-items-center">
               <div class="d-flex justify-content-between align-items-center">
                 <div class="mr-2">
-               <img
+                  <img
                     class="rounded-circle"
                     width="45"
                     src="<%= post.user[0].photo %>"
                     alt=""
-                  />   
+                  />
                 </div>
                 <div class="ml-2">
                   <div class="h5 m-0 font-weight-bold">
@@ -186,6 +235,7 @@
           </div>
           <div class="card-footer">
             <div>
+              <% if(user) { %>
               <a href="/community/post/<%= post._id %>/<%= user._id %>"
                 ><i
                   onclick="myFunction(this)"
@@ -193,10 +243,20 @@
                 ></i
                 ><%= post.likes %></a
               >
+              <% }else{ %>
+              <a href="/auth"
+                ><i
+                  onclick="myFunction(this)"
+                  class="fas fa-heart text-danger px-1"
+                ></i
+                ><%= post.likes %></a
+              >
+              <% } %>
             </div>
           </div>
 
           <div class="form-group shadow-textarea comment-area">
+            <% if(user) { %>
             <form
               action="/post/create/<%= post.id %>/<%= user.id %>/"
               method="post"
@@ -219,6 +279,9 @@
 
               <button type="submit" class="post-button mr-5">Post</button>
             </form>
+            <% }else{ %>
+            <div>Login to comment</div>
+            <% } %>
 
             <br /><br />
 
@@ -264,9 +327,7 @@
 
           <!--Comment Section -->
         </div>
-        <% } %>
-        <% }) %>
-      
+        <% } %> <% }) %>
       </div>
     </div>
     <!-- ============================================================== -->
