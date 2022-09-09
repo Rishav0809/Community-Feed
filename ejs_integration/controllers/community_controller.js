@@ -78,6 +78,12 @@ exports.updatePost = async (req, res) => {
       await userRelated.save();
       await post.save();
     }
+    else{
+      post.likes--;
+      userRelated.likedPosts.pop(post);
+      await userRelated.save();
+      await post.save();
+    }
 
     res.redirect("/community");
   } catch (e) {

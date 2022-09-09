@@ -238,7 +238,6 @@
               <% if(user) { %>
               <a href="/community/post/<%= post._id %>/<%= user._id %>"
                 ><i
-                  onclick="myFunction(this)"
                   class="fas fa-heart text-danger px-1"
                 ></i
                 ><%= post.likes %></a
@@ -246,7 +245,6 @@
               <% }else{ %>
               <a href="/auth"
                 ><i
-                  onclick="myFunction(this)"
                   class="fas fa-heart text-danger px-1"
                 ></i
                 ><%= post.likes %></a
@@ -317,7 +315,8 @@
                             <%= comment.text %>
                           </div>
                           <div class="flex-row px-4 pt-2">
-                            <button class="ml-auto mt-1 reply">Reply</button>
+                            
+                            <!-- <button class="ml-auto mt-1 reply">Reply</button> -->
                           </div>
                         </li>
                         <% }) %>
